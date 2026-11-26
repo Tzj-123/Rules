@@ -1,0 +1,28 @@
+# 红果短剧去广告分流 - 基础版，无需 MITM
+# 来源: k6nfmm7dbr-commits/hongguo-lite surge/hongguo-lite.sgmodule (MIT)
+# 已由 Surge 2段格式转成圈X 3段格式: DOMAIN->host, DOMAIN-SUFFIX->host-suffix, DOMAIN-KEYWORD->host-keyword
+# 注意: 本分流要排在 snssdk.com / zijieapi.com 的宽泛直连规则之前，否则不生效
+
+# 穿山甲 / Pangle 广告 SDK
+host-keyword, pangolin, reject
+host-suffix, pglstatp-toutiao.com, reject
+host-suffix, pglstatp-toutiao-b.com, reject
+
+# 广告素材签名域 (p3/p6/p9-ad-sign.byteimg.com)
+host-keyword, -ad-sign.byteimg.com, reject
+
+# 广告跳转
+host, zlink.ugsdk.cn, reject
+
+# 字节广告 API 子域 (ads3-normal / ads5-normal.zijieapi.com 等)
+host-wildcard, ads*-normal.zijieapi.com, reject
+
+# 埋点 / 上报 (介意可删掉这一段)
+host, mon.toutiaocloud.net, reject
+host, mon.toutiaocloud.com, reject
+host, i.snssdk.com, reject
+host, i-lq.snssdk.com, reject
+host, is.snssdk.com, reject
+host, is-lq.snssdk.com, reject
+host-keyword, applog.fqnovel.com, reject
+host-keyword, -misc.fqnovel.com, reject

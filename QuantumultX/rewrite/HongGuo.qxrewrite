@@ -1,0 +1,10 @@
+# 红果短剧去广告重写 - 进阶版，需要 MITM 并信任证书
+# 来源: k6nfmm7dbr-commits/hongguo-lite surge/hongguo-lite-plus.sgmodule (MIT)
+# 原版用 Map Local 返回空 JSON {}，圈X 对应写法是 reject-dict (返回空字典)
+# 警告: *.snssdk.com 是字节主 API 域，若红果开了证书固定，MITM 后可能打不开/转圈；
+# 出现这种情况就停用本重写，只用 HongGuo.list 基础版分流即可。
+
+^https?:\/\/[^\/]*pangolin-sdk-toutiao[^\/]*\/api\/ad\/union\/sdk\/ url reject-dict
+^https?:\/\/.+\.snssdk\.com\/api\/ad\/ url reject-dict
+
+hostname = *.pangolin-sdk-toutiao.com, *.pangolin-sdk-toutiao-b.com, *.pangolin-sdk-toutiao1.com, *.snssdk.com
