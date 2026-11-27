@@ -26,3 +26,7 @@ host, is.snssdk.com, reject
 host, is-lq.snssdk.com, reject
 host-keyword, applog.fqnovel.com, reject
 host-keyword, -misc.fqnovel.com, reject
+
+# 直播屏蔽 (2026-11-27 加): 红果的直播走抖音系拉流域名, 拦掉后直播播不了; 短剧不受影响
+# 注意: 分流没法只针对单个 App, 抖音 App 的直播同域名也会一起被拦
+host-wildcard, pull-*.douyincdn.com, reject
